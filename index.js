@@ -7,7 +7,7 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 app.use(cors({
-    origin:'http://localhost:5173',
+    origin:'pokemon-frontend-gold.vercel.app',
     credentials:true
 }))
 const userModel = require('./userModel')
@@ -120,3 +120,4 @@ app.listen(process.env.PORT,()=>{
     console.log(`connected to port ${process.env.PORT}`)
 
 })
+
