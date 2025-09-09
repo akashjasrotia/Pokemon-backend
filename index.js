@@ -116,6 +116,7 @@ app.get('/cought',async (req,res)=>{
         res.status(500).json({message:'Error fetching cought pokemons',error:err})
     }
 })
-app.listen(3000,()=>{
-    console.log('connected to port 3000')
+app.listen(process.env.PORT,()=>{
+    console.log(`connected to port ${process.env.PORT}`)
+
 })
