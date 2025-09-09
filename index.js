@@ -6,10 +6,25 @@ const bcrypt = require('bcrypt')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
+import cors from "cors";
+
+const allowedOrigins = [
+  "http://localhost:5173", // for dev
+  "https://pokemon-frontend-gold.vercel.app" // your deployed frontend
+];
+
 app.use(cors({
-    origin:'pokemon-frontend-gold.vercel.app',
-    credentials:true
-}))
+  origin: function(origin, callback){
+    if(!origin) return callback(null, true); // allow non-browser tools like Postman
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true
+}));
+
 const userModel = require('./userModel')
 app.use(express.json())
 app.get('/isLoggedIn',(req,res)=>{
@@ -120,4 +135,5 @@ app.listen(process.env.PORT,()=>{
     console.log(`connected to port ${process.env.PORT}`)
 
 })
+
 
