@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
-import cors from "cors";
+
 
 const allowedOrigins = [
   "http://localhost:5173", // for dev
@@ -135,5 +135,6 @@ app.listen(process.env.PORT,()=>{
     console.log(`connected to port ${process.env.PORT}`)
 
 })
+
 
 
