@@ -13,7 +13,7 @@ app.use(cookieParser())
 const allowedOrigins = [
   "http://localhost:5173",
   "https://pokemon-frontend-gold.vercel.app"
-]
+];
 
 app.use(cors({
   origin: function(origin, callback){
@@ -25,6 +25,7 @@ app.use(cors({
   },
   credentials: true
 }))
+
 
 app.get('/isLoggedIn',(req,res)=>{
   const token = req.cookies.token
@@ -107,3 +108,4 @@ app.get('/cought', async (req,res)=>{
 app.listen(process.env.PORT || 3000, ()=> {
   console.log(`Server running on port ${process.env.PORT || 3000}`)
 })
+
